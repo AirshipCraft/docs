@@ -119,8 +119,15 @@ There are a few requirements in-order for nations to mint their own currencies.
 
 When the prerequisites are met, nation leaders will able to run a command to register their currency with a name (string) and symbol (char). Once successfully created, the currency will be registered to the global economy. All currencies are backed by the value of the item `gold`. Exchange rates between different currencies will be generated based on a few factors which we will cover later.    
 
-Market stalls in *any* town/nation can be configured to accept any currency they choose that is registered globally. They can also choose to not accept certain currencies at any time of their choosing.    
+Market stalls in *any* town/nation can be configured to accept any currency they choose that is registered globally. They can also choose to not accept certain currencies at any time of their choosing.  
 
+> 📝 **Note:** Since we are using physical item currencies and not a virtual account balance we can't use a base 10 number system since gold crafting recipes such as that for ingots and for gold blocks use 9 items, therefore it would be a base 9 system with gold nuggets being analogous to our parts of a whole (ingot) and blocks would be multiples of a whole. 
+    
 #### **Exchange Rates**
 Currency exchanges between different types of currencies is handled by the bank. When depositing currency to a bank, the bank automatically converts it into the gold equivalent. If a foreign currency is deposited, then that gold is taken out of the original nation's bank into the new one. For example:   
-// todo: i ran into some problems when trying to design a thought experiment 
+    
+- 1 newly minted currency ($NEW) is equivalent to 1 gold ***ingot***.
+- Over time, the value of $NEW depreciates to 6 gold ***nuggets***.
+- Player A deposits 10 $NEW into Bank of Nation B
+- The Bank of Nation B converts 10 $NEW into ([10 * 6 = 60 nuggets]/9 = *6 ingots + 6 nuggets*)
+- Player A can then withdraw the money as either gold, $NEW or any other currency supported by that bank. 
