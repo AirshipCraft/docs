@@ -41,6 +41,8 @@
     - [Objects](mech/nodes/nations/objects.md)
     - [Permissions](mech/nodes/nations/permissions.md)
   - [NPC Integration](mech/nodes/npc-integration.md)
+
+- [Agriculture](mech/agriculture.md)
   
 - [Quests](mech/quests.md)
 
