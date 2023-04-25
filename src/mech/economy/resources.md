@@ -2,7 +2,7 @@
 # Resources
 One of the main components of the project is augmenting resource distribution in order to promote trade as well as warfare. A good system of handling resource distribution and collection goes hand-in-hand with a good [economy](../economy.md) and [claiming system](../nation-system.md).    
 
-> See [Territories](../nodes/territories.md)
+> See also [Territories](../nodes/territories.md) and [Agriculture](../agriculture.md)
     
 ## Overview
 By creating scarcity in Minecraft we pave the way for things such as civilizations, politics, and nation building.    
