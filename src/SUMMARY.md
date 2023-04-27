@@ -11,7 +11,7 @@
   - [Companies](mech/economy/companies.md)
   - [Resources](mech/economy/resources.md)
     - [Crops](mech/economy/resources/crops.md)
-    - [HiddenOre](mech/economy/resources/hiddenore.md)
+    - [Ores](mech/economy/resources/ore.md)
   - [API](mech/economy/API.md)
     - [Class Hierarchy](mech/economy/api/hierarchy.md)
     <!-- - [TaxedTransaction](mech/economy/api/taxedtransaction.md) -->
