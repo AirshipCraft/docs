@@ -10,6 +10,14 @@ We also plan to introduce a variety of new crops and crop types that players can
    
 We want to make changes to the animal breeding system, to make it more realistic and immersive. This will include changes to the way animals behave, as well as new mechanics for breeding and raising animals. This way animals will naturally increase in population in the wilderness and new population caps for animals will be introduced to prevent overbreeding or perhaps introducing the extinction of an animal from an area.
 
+## Mechanic Changes
+This section goes over mechanical changes introduced by the Agriculture plugin.
+### Change in Growth Rates
+Growth rates will now vary depending on factors such as biome and longitudinal location. This is to make the environment feel semi-realistic but also by hindering massive farms. 
+
+### Food Expiration
+This is a change to make storing foods for long periods of time a little more challenging. The hope is by adding an expiration to food, we can prevent massive stockpiles of foodstuffs and introduce new mechanics that aid in preservation of food. By trying to limit or hinder large player-made food stockpiles, we can try to promote trading and more of an active agrarian lifestyle in players. 
+
 ## New Items
 In this section we will cover the new items planned to be added as part of this plugin. 
 
