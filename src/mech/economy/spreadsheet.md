@@ -278,3 +278,16 @@ Below is a list of benefits from designing and implementing a web app that dynam
 7. **Supports server administration:** With a website that displays market data, server administrators can monitor the state of the economy and adjust game mechanics as needed to ensure a healthy and balanced economy.
    
 Overall, a website that displays dynamic buy and sell information for the in-game market can greatly enhance the trading experience, encourage player engagement, increase market transparency, and support more advanced market analysis.
+
+## Other Notes
+There are a few features that could be added to the web application to enhance the user experience and provide more value to the community:
+   
+1. Search Functionality: A search function that allows users to quickly find the items they're interested in can be a huge time saver. The search function could include filters to narrow down results based on the region, item name, or other criteria.
+
+3. Historical Data: Providing historical data on price trends for each item in the game can help traders make more informed decisions. This data can be displayed using charts or graphs and can be made available for download in spreadsheet format.
+
+4. Discord Integration: Integrating with Discord can help users stay up-to-date on the latest market trends. Combining this with a notification system that alerts users when prices for certain items drop below a certain threshold or reach a certain price can make the application a valuable tool for traders. 
+
+5. Mobile Optimization: With more and more people accessing the web on their mobile devices, it's important to ensure that the web application is optimized for mobile use. This can be achieved by using responsive design and ensuring that the website is compatible with a wide range of mobile devices.
+
+Overall, these additional features can enhance the functionality and user experience of the web application and make it a valuable tool for traders in the AirshipCraft community.
