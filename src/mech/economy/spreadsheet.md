@@ -259,3 +259,22 @@ We'll need to use HTML, CSS, and JavaScript to create the user interface for the
 ### 5. Implement real-time updates, or update the prices once a day at a certain time
 
 Finally, we'll need to implement real-time updates or schedule daily updates at a certain time. We can use WebSocket technology to implement real-time updates or set up a scheduled task that retrieves the latest price data once a day at a certain time.
+
+## Benefits of Implementation
+Below is a list of benefits from designing and implementing a web app that dynamically displays historical market data such as buy and sell orders for the in-game economy:
+   
+1. **Easy access to market information:** Players will have easy access to real-time information about the prices of items in different regions, allowing them to make more informed decisions when buying or selling items.
+
+2. **Improved trading experience:** With access to real-time market data, players can make more strategic trading decisions, leading to a more satisfying trading experience.
+
+3. **Increased player engagement:** A dynamic website that displays market data can increase player engagement by encouraging them to participate in the in-game economy.
+
+4. **Promotion of player-to-player trading:** By providing information on buy and sell orders, the website can encourage players to trade directly with each other, rather than relying solely on NPC vendors.
+
+5. **Market transparency:** A dynamically updated market website can increase transparency in the economy by showing the current state of supply and demand for different items.
+
+6. **Facilitates market analysis:** With access to detailed historical data, players and economists can conduct more detailed analysis of the in-game economy, leading to more advanced strategies and a deeper understanding of market dynamics.
+
+7. **Supports server administration:** With a website that displays market data, server administrators can monitor the state of the economy and adjust game mechanics as needed to ensure a healthy and balanced economy.
+   
+Overall, a website that displays dynamic buy and sell information for the in-game market can greatly enhance the trading experience, encourage player engagement, increase market transparency, and support more advanced market analysis.
