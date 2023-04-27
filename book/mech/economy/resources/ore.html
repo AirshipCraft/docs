@@ -1,0 +1,474 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Ores - AirshipCraft Documentation</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../../../favicon.svg">
+        <link rel="shortcut icon" href="../../../favicon.png">
+        <link rel="stylesheet" href="../../../css/variables.css">
+        <link rel="stylesheet" href="../../../css/general.css">
+        <link rel="stylesheet" href="../../../css/chrome.css">
+        <link rel="stylesheet" href="../../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../../highlight.css">
+        <link rel="stylesheet" href="../../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../../../theme/pagetoc.css">
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../../../index.html">Introduction</a></li><li class="chapter-item expanded affix "><a href="../../../CHANGELOG.html">Changelog</a></li><li class="chapter-item expanded affix "><li class="part-title">Mechanics</li><li class="chapter-item expanded "><a href="../../../mech/economy.html"><strong aria-hidden="true">1.</strong> Economy</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../mech/economy/market.html"><strong aria-hidden="true">1.1.</strong> Market</a></li><li class="chapter-item expanded "><a href="../../../mech/economy/spreadsheet.html"><strong aria-hidden="true">1.2.</strong> Spreadsheet</a></li><li class="chapter-item expanded "><a href="../../../mech/economy/banking.html"><strong aria-hidden="true">1.3.</strong> Banking</a></li><li class="chapter-item expanded "><a href="../../../mech/economy/companies.html"><strong aria-hidden="true">1.4.</strong> Companies</a></li><li class="chapter-item expanded "><a href="../../../mech/economy/resources.html"><strong aria-hidden="true">1.5.</strong> Resources</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../mech/economy/resources/crops.html"><strong aria-hidden="true">1.5.1.</strong> Crops</a></li><li class="chapter-item expanded "><a href="../../../mech/economy/resources/ore.html" class="active"><strong aria-hidden="true">1.5.2.</strong> Ores</a></li></ol></li><li class="chapter-item expanded "><a href="../../../mech/economy/API.html"><strong aria-hidden="true">1.6.</strong> API</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../mech/economy/api/hierarchy.html"><strong aria-hidden="true">1.6.1.</strong> Class Hierarchy</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../../mech/npc.html"><strong aria-hidden="true">2.</strong> NPCs</a></li><li><ol class="section"><li class="chapter-item expanded "><div><strong aria-hidden="true">2.1.</strong> Types</div></li></ol></li><li class="chapter-item expanded "><a href="../../../mech/combat.html"><strong aria-hidden="true">3.</strong> Combat</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../mech/combat/movecraft.html"><strong aria-hidden="true">3.1.</strong> Movecraft</a></li><li class="chapter-item expanded "><a href="../../../mech/combat/damagetypes.html"><strong aria-hidden="true">3.2.</strong> Damage Types</a></li><li class="chapter-item expanded "><a href="../../../mech/combat/artifacts.html"><strong aria-hidden="true">3.3.</strong> Artifacts</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../mech/combat/artifact-list.html"><strong aria-hidden="true">3.3.1.</strong> List of Artifacts</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../../mech/skills.html"><strong aria-hidden="true">4.</strong> Skills</a></li><li class="chapter-item expanded "><a href="../../../mech/cults.html"><strong aria-hidden="true">5.</strong> Cults</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../mech/cults/objects.html"><strong aria-hidden="true">5.1.</strong> Objects</a></li><li class="chapter-item expanded "><a href="../../../mech/cults/config.html"><strong aria-hidden="true">5.2.</strong> Configuration</a></li><li class="chapter-item expanded "><a href="../../../mech/cults/altars.html"><strong aria-hidden="true">5.3.</strong> Altars</a></li><li class="chapter-item expanded "><a href="../../../mech/cults/shrines.html"><strong aria-hidden="true">5.4.</strong> Shrines</a></li><li class="chapter-item expanded "><a href="../../../mech/cults/transmutations.html"><strong aria-hidden="true">5.5.</strong> Transmutations</a></li></ol></li><li class="chapter-item expanded "><a href="../../../mech/nodes.html"><strong aria-hidden="true">6.</strong> Nodes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../mech/nodes/territories.html"><strong aria-hidden="true">6.1.</strong> Territories</a></li><li class="chapter-item expanded "><a href="../../../mech/nodes/handles-over-ids.html"><strong aria-hidden="true">6.2.</strong> Prefer Handles over IDs</a></li><li class="chapter-item expanded "><a href="../../../mech/nodes/nation-system.html"><strong aria-hidden="true">6.3.</strong> Nation System</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../mech/nodes/nations/objects.html"><strong aria-hidden="true">6.3.1.</strong> Objects</a></li><li class="chapter-item expanded "><a href="../../../mech/nodes/nations/permissions.html"><strong aria-hidden="true">6.3.2.</strong> Permissions</a></li></ol></li><li class="chapter-item expanded "><a href="../../../mech/nodes/npc-integration.html"><strong aria-hidden="true">6.4.</strong> NPC Integration</a></li></ol></li><li class="chapter-item expanded "><a href="../../../mech/agriculture.html"><strong aria-hidden="true">7.</strong> Agriculture</a></li><li class="chapter-item expanded "><a href="../../../mech/quests.html"><strong aria-hidden="true">8.</strong> Quests</a></li><li class="chapter-item expanded affix "><li class="part-title">Map</li><li class="chapter-item expanded "><a href="../../../map/regions.html"><strong aria-hidden="true">9.</strong> Regions</a></li><li class="chapter-item expanded "><a href="../../../map/cities.html"><strong aria-hidden="true">10.</strong> City States</a></li><li class="chapter-item expanded "><a href="../../../map/mapoverview.html"><strong aria-hidden="true">11.</strong> Map Overview</a></li><li class="chapter-item expanded affix "><li class="part-title">Core</li><li class="chapter-item expanded "><a href="../../../core/common-lib.html"><strong aria-hidden="true">12.</strong> ACCommonLib</a></li><li class="chapter-item expanded "><a href="../../../core/datum.html"><strong aria-hidden="true">13.</strong> Datum</a></li><li class="chapter-item expanded affix "><li class="part-title">General Development</li><li class="chapter-item expanded "><a href="../../../administration/housekeeping.html"><strong aria-hidden="true">14.</strong> Housekeeping</a></li><li class="chapter-item expanded "><a href="../../../administration/optimization.html"><strong aria-hidden="true">15.</strong> Optimization</a></li><li class="chapter-item expanded "><a href="../../../administration/coding-standard.html"><strong aria-hidden="true">16.</strong> Coding Standard</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../administration/commits.html"><strong aria-hidden="true">16.1.</strong> Proper Git Commits</a></li></ol></li><li class="chapter-item expanded "><a href="../../../administration/project-timeline.html"><strong aria-hidden="true">17.</strong> Project Timeline</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../administration/timeline/phase-1.html"><strong aria-hidden="true">17.1.</strong> Phase 1</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Misc</li><li class="chapter-item expanded "><a href="../../../misc/lore.html"><strong aria-hidden="true">18.</strong> Lore</a></li><li class="chapter-item expanded affix "><a href="../../../misc/contributions.html">Contributions</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">AirshipCraft Documentation</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <!-- Page table of contents -->
+                        <div class="sidetoc"><nav class="pagetoc"></nav></div>
+
+                        <!-- Page table of contents -->
+                        <div class="sidetoc"><nav class="pagetoc"></nav></div>
+
+                        <!-- Page table of contents -->
+                        <div class="sidetoc"><nav class="pagetoc"></nav></div>
+
+                        <!-- Page table of contents -->
+                        <div class="sidetoc"><nav class="pagetoc"></nav></div>
+
+                        <!-- Page table of contents -->
+                        <div class="sidetoc"><nav class="pagetoc"></nav></div>
+
+                        <h1 id="ores"><a class="header" href="#ores">Ores</a></h1>
+<p>By combining the Node's system of spawning ores with a bias algorithm, we can create a more realistic and immersive gameplay experience, as certain ores would be more abundant in certain regions and rare in others.</p>
+<h2 id="overview"><a class="header" href="#overview">Overview</a></h2>
+<p>The HiddenOre system will also add an extra layer of excitement and challenge to the game, as players will have to explore and search for ores in hidden locations, rather than relying on the traditional method of mining. It will encourage players to be more adventurous and explorative, which will add more depth to the gameplay.</p>
+<p>Overall, this hybrid system will make the economy more interesting and dynamic, and create a more realistic and immersive gameplay experience.</p>
+<p>To start, let's discuss the current system used in phonon's <a href="https://github.com/phonon/minecraft-nodes">nodes</a> plugin. In this system, ores are spawned based on the type of node (such as a forest node or a mountain node) and the depth of the block being generated. This means that certain ores will only spawn in certain types of nodes, and at certain depths. However, this system can lead to a lack of scarcity in resources, as players can easily find all the ores they need within their own node.</p>
+<p>To create a more realistic and challenging resource management system, we can add an algorithm that creates latitudinal and longitudinal biases in ore generation. This means that certain types of ores will be more common in certain areas of the map, and less common in others.</p>
+<p>Here's how this could work in practice:</p>
+<ol>
+<li>Determine the dimensions of the map: We need to know the size of the map in order to properly generate ore distribution.</li>
+<li>Divide the map into sections: We can divide the map into sections based on latitudinal and longitudinal lines. For example, we could divide the map into a grid of 100x100 chunks. Each chunk would have its own ore distribution based on the algorithm we create. Fortunately enough, since we are using the Paralon map this part is already done for us.</li>
+</ol>
+<p><img src="/src/images/climate_map.webp" alt="climate_map" /></p>
+<ol start="3">
+<li>Generate ore biases: We can create an algorithm that generates biases for each type of ore in each chunk. These biases could be based on factors such as the distance from the equator or the distance from the center of the map. We could also take into account the type of biome or node present in each chunk.</li>
+</ol>
+<pre><code class="language-java">for each chunk in the map:
+    for each ore type:
+        lat_bias = function(chunk.latitude)
+        long_bias = function(chunk.longitude)
+        biome_bias = function(chunk.biome)
+        depth_bias = function(block.depth)
+        total_bias = lat_bias * long_bias * biome_bias * depth_bias
+        set ore bias in chunk for ore type to total_bias
+</code></pre>
+<ol start="4">
+<li>Generate ore deposits: Using the biases we generated, we can then generate ore deposits within each chunk. We can use a system similar to Programmerdan's HiddenOre plugin to generate ore deposits that are hidden until a player uncovers them.</li>
+</ol>
+<pre><code class="language-java">for each chunk in the map:
+    for each ore type:
+        ore_bias = get ore bias in chunk for ore type
+        for each block in the chunk:
+            if block is stone and random value &lt; ore_bias:
+                generate ore deposit centered around block
+                hide ore deposit until player uncovers it
+</code></pre>
+<ol start="5">
+<li>Adjust ore respawn rates: To prevent players from simply moving from chunk to chunk to find all the ore they need, we can adjust the respawn rates of ore deposits based on the number of times they've been mined. For example, an ore deposit that has been mined 10 times might have a much slower respawn rate than a deposit that has only been mined once.</li>
+</ol>
+<pre><code class="language-java">on ore deposit mined:
+    ore_deposit.times_mined++
+    ore_deposit.respawn_rate = base_respawn_rate * 1.5^ore_deposit.times_mined
+</code></pre>
+<p>With this system, players will need to explore different areas of the map in order to find all the resources they need. This adds an element of challenge and realism to the game, and encourages players to interact with each other to trade resources and form alliances.</p>
+<h2 id="effect-on-gameplay"><a class="header" href="#effect-on-gameplay">Effect on Gameplay</a></h2>
+<p>The scarcity of resources will have a significant impact on the economy of the server. With ores being harder to find, players will have to work harder to obtain them, and this could result in an increase in the value of the ores in the market. This could lead to a more dynamic and complex economy, where the value of different ores fluctuates based on their scarcity.</p>
+<p>It is important to balance the ore generation system so that it is not too difficult for players to find ores, but also not too easy. If it is too difficult, players may become frustrated and lose interest in mining altogether, and if it is too easy, it could lead to an overabundance of resources and hurt the economy. It may be useful to collect data on ore generation rates and adjust them as necessary to achieve a balance.</p>
+<p>Another way to make the ore generation more interesting and challenging would be to modify the ore generation rates based on the biome. For example, ores could be more common in underground caves or mountains, but more scarce in forests or oceans. This could encourage players to explore different biomes to find the ores they need.</p>
+<p>The scarcity of resources could also encourage players to work together and form communities to share resources and pool their efforts in mining. This could create a more collaborative and social environment on the server, where players are more likely to work together and help each other out.</p>
+<p>Resource scarcity could also make gameplay more challenging and rewarding. Players may need to be more strategic in their mining efforts, and prioritize which ores to go after based on their rarity and value. This could lead to a more dynamic and interesting gameplay experience, where players have to think carefully about their actions and make strategic decisions.</p>
+<h2 id="bias-algorithm"><a class="header" href="#bias-algorithm">Bias Algorithm</a></h2>
+<p>First, let's review what we're trying to accomplish with the bias algorithm. We want to modify the generation of ore blocks in Minecraft so that certain types of ore are more likely to generate in specific areas, while still maintaining a natural look and feel to the world. To achieve this, we'll need to analyze the terrain in each chunk and adjust the probability of different ore types generating based on certain factors, such as altitude, biome, and proximity to other types of blocks.</p>
+<p>Here's a step-by-step breakdown of how we can implement the bias algorithm:</p>
+<ol>
+<li>
+<p>We'll start by defining a list of ore types that we want to bias. For example, we might want to bias the generation of diamonds, emeralds, and gold in certain areas.</p>
+</li>
+<li>
+<p>Next, we'll need to create a method that calculates the probability of each ore type generating in a given block. This method will take in the coordinates of the block, as well as any relevant factors such as altitude, biome, and proximity to other blocks. It will output a value between 0 and 1, indicating the probability of the ore generating in that block.</p>
+</li>
+</ol>
+<p>Here's some pseudocode for this method:</p>
+<pre><code class="language-java">public static double calculateOreProbability(int x, int y, int z, BlockType oreType) {
+    // calculate the base probability of the ore generating in this block
+    double baseProbability = 0.0;
+    if (oreType == BlockType.DIAMOND_ORE) {
+        // calculate the base probability for diamond ore based on altitude
+        baseProbability = calculateDiamondProbability(y);
+    } else if (oreType == BlockType.EMERALD_ORE) {
+        // calculate the base probability for emerald ore based on biome
+        Biome biome = getBiome(x, z);
+        baseProbability = calculateEmeraldProbability(biome);
+    } else if (oreType == BlockType.GOLD_ORE) {
+        // calculate the base probability for gold ore based on proximity to other blocks
+        baseProbability = calculateGoldProbability(x, y, z);
+    }
+    
+    // apply any additional biases based on the surrounding blocks
+    double blockBias = calculateBlockBias(x, y, z, oreType);
+    double totalProbability = baseProbability * blockBias;
+    
+    return totalProbability;
+}
+</code></pre>
+<p>In this pseudocode, <code>'calculateDiamondProbability'</code> would be a method that calculates the base probability of diamond ore generating in a block based on its Y coordinate, <code>'calculateEmeraldProbability'</code> would calculate the probability of emerald ore generating based on the biome, and <code>'calculateGoldProbability'</code> would calculate the probability of gold ore generating based on the proximity to other blocks.</p>
+<ol start="3">
+<li>Once we have the probability of each ore type generating in each block, we'll need to modify the Minecraft world generation algorithm to take these probabilities into account. One way to do this would be to hook into the <code>ChunkGenerator</code> class provided by the Spigot or Paper API, which is responsible for generating the terrain for each chunk.</li>
+</ol>
+<p>The <code>ChunkGenerator</code> is responsible for generating the blocks in a chunk. In order to implement a bias algorithm for ore generation, we would need to create a custom <code>ChunkGenerator</code> that modifies the standard ore generation to bias the distribution of ores.</p>
+<p>Here's a general outline of the steps we would need to take:</p>
+<ol>
+<li>
+<p>Create a new class that implements the ChunkGenerator interface. This will allow us to generate custom chunks.</p>
+</li>
+<li>
+<p>Override the generateChunkData method. This is where we will modify the standard ore generation to implement our bias algorithm.</p>
+</li>
+<li>
+<p>In the generateChunkData method, we will first call the standard ore generation code to generate the standard ore veins. We will then modify the ore distribution based on our bias algorithm.</p>
+</li>
+<li>
+<p>To implement the bias algorithm, we will use a noise function to generate a value for each block in the chunk. We will then use this value to adjust the number of ore blocks that are placed in each chunk. The exact details of how we implement the noise function will depend on the specific bias algorithm we choose.</p>
+</li>
+<li>
+<p>Once we have adjusted the ore distribution, we can generate the rest of the blocks in the chunk as usual.</p>
+</li>
+</ol>
+<p>Here's some pseudocode to give you an idea of what the implementation might look like:</p>
+<pre><code class="language-java">public class CustomChunkGenerator implements ChunkGenerator {
+    // Standard ore generation settings
+    private final OreSettings oreSettings = new OreSettings();
+
+    @Override
+    public ChunkData generateChunkData(World world, Random random, int chunkX, int chunkZ, BiomeGrid biome) {
+        ChunkData chunkData = createChunkData(world);
+
+        // Generate standard ore veins
+        oreSettings.generate(chunkData, random, chunkX, chunkZ);
+
+        // Generate noise function for ore distribution bias
+        NoiseGenerator noiseGenerator = new PerlinNoiseGenerator(random.nextLong(), 3, 0.5, 0.5);
+
+        // Adjust ore distribution based on noise function
+        for (int x = 0; x &lt; 16; x++) {
+            for (int y = 0; y &lt; 256; y++) {
+                for (int z = 0; z &lt; 16; z++) {
+                    double noiseValue = noiseGenerator.getValue((chunkX * 16 + x) / 16.0, y / 256.0, (chunkZ * 16 + z) / 16.0);
+                    if (noiseValue &gt; 0) {
+                        // Increase ore distribution
+                        int count = chunkData.getBlockTypeId(x, y, z) == Material.STONE.getId() ? 2 : 0;
+                        chunkData.setBlock(x, y, z, Material.DIAMOND_ORE);
+                        for (int i = 0; i &lt; count; i++) {
+                            int offsetX = random.nextInt(3) - 1;
+                            int offsetY = random.nextInt(3) - 1;
+                            int offsetZ = random.nextInt(3) - 1;
+                            int newX = x + offsetX;
+                            int newY = y + offsetY;
+                            int newZ = z + offsetZ;
+                            if (chunkData.getBlockTypeId(newX, newY, newZ) == Material.STONE.getId()) {
+                                chunkData.setBlock(newX, newY, newZ, Material.DIAMOND_ORE);
+                            }
+                        }
+                    } else if (noiseValue &lt; 0) {
+                        // Decrease ore distribution
+                        if (chunkData.getBlockTypeId(x, y, z) == Material.DIAMOND_ORE.getId()) {
+                            chunkData.setBlock(x, y, z, Material.STONE);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+</code></pre>
+<p>Here's some pseudocode for a possible implementation of the bias algorithm:</p>
+<pre><code class="language-java">// Define the parameters for generating biases
+double latRange = mapDimensions.latMax - mapDimensions.latMin;
+double longRange = mapDimensions.longMax - mapDimensions.longMin;
+double centerLat = (mapDimensions.latMax + mapDimensions.latMin) / 2.0;
+double centerLong = (mapDimensions.longMax + mapDimensions.longMin) / 2.0;
+double maxBias = 2.0; // This is the maximum possible bias value for an ore type
+
+// Loop through each chunk on the map
+for (Chunk chunk : map.getChunks()) {
+    // Calculate the latitudinal and longitudinal biases for this chunk
+    double latBias = Math.sin((chunk.getCenter().getLatitude() - centerLat) * Math.PI / latRange);
+    double longBias = Math.sin((chunk.getCenter().getLongitude() - centerLong) * Math.PI / longRange);
+
+    // Calculate the biome bias for this chunk
+    Biome biome = chunk.getBiome();
+    double biomeBias = getBiomeBias(biome);
+
+    // Loop through each ore type and calculate its total bias for this chunk
+    for (OreType oreType : OreType.values()) {
+        double depthBias = getDepthBias(chunk.getDepth(), oreType);
+        double totalBias = latBias * longBias * biomeBias * depthBias * maxBias;
+        chunk.setOreBias(oreType, totalBias);
+    }
+}
+</code></pre>
+<p>This pseudocode calculates the latitudinal and longitudinal biases for each chunk on the map, based on their distance from the center of the map. It then calculates the biome bias for each chunk, based on the type of biome it's in, and the depth bias for each ore type at that depth.</p>
+<p>Finally, it calculates the total bias for each ore type in each chunk by multiplying these biases together, and sets the ore bias value for that ore type in that chunk. This value will be used later when generating ore deposits within the chunk.</p>
+<p>To elaborate, the pseudocode sets up the parameters for generating biases. <code>latRange</code> and <code>longRange</code> represent the difference between the maximum and minimum latitude and longitude values for the map, while <code>centerLat</code> and <code>centerLong</code> represent the latitude and longitude of the center of the map. These values are used to calculate the latitudinal and longitudinal biases for each chunk, based on their distance from the center of the map.</p>
+<p>The <code>maxBias</code> value represents the maximum possible bias value for an ore type. This value is used to ensure that biases are normalized and fall within a specific range.</p>
+<p>Next, the pseudocode loops through each chunk on the map and calculates its latitudinal and longitudinal biases using the formula: <code>Math.sin((chunk.getCenter().getLatitude() - centerLat) * Math.PI / latRange)</code> and <code>Math.sin((chunk.getCenter().getLongitude() - centerLong) * Math.PI / longRange)</code>. These values are used to reflect the position of the chunk relative to the center of the map.</p>
+<p>The pseudocode then calculates the biome bias for each chunk using the <code>getBiomeBias</code> function, which takes the chunk's biome as input and returns a bias value. Biome biases allow us to generate different types of ores in different biomes, depending on the environmental conditions and resources available.</p>
+<p>After calculating the biome bias, the pseudocode loops through each ore type and calculates its total bias for this chunk. The depth bias for each ore type is determined using the <code>getDepthBias</code> function, which takes the depth of the chunk and the ore type as inputs and returns a bias value. Multiplying the latitudinal, longitudinal, biome, depth, and maximum biases together yields the total bias value for that ore type in that chunk.</p>
+<p>Finally, the pseudocode sets the ore bias value for that ore type in that chunk using the <code>chunk.setOreBias</code> method. These ore biases will be used later when generating ore deposits within the chunk. By using bias algorithms, the ore generation process is made more dynamic and realistic, and can be customized to suit the specific needs of the game.</p>
+<p>Here's an example implementation of a custom chunk generator that incorporates the ore bias algorithm:</p>
+<pre><code class="language-java">public class CustomChunkGenerator extends ChunkGenerator {
+    private final MapDimensions mapDimensions;
+    private final double latRange;
+    private final double longRange;
+    private final double centerLat;
+    private final double centerLong;
+    private final double maxBias = 2.0;
+
+    public CustomChunkGenerator(MapDimensions mapDimensions) {
+        this.mapDimensions = mapDimensions;
+        this.latRange = mapDimensions.latMax - mapDimensions.latMin;
+        this.longRange = mapDimensions.longMax - mapDimensions.longMin;
+        this.centerLat = (mapDimensions.latMax + mapDimensions.latMin) / 2.0;
+        this.centerLong = (mapDimensions.longMax + mapDimensions.longMin) / 2.0;
+    }
+
+    @Override
+    public ChunkData generateChunkData(World world, Random random, int chunkX, int chunkZ, BiomeGrid biome) {
+        ChunkData chunkData = createChunkData(world);
+
+        // Calculate the latitudinal and longitudinal biases for this chunk
+        double latBias = Math.sin((chunkX * 16 + 8 - centerLat) * Math.PI / latRange);
+        double longBias = Math.sin((chunkZ * 16 + 8 - centerLong) * Math.PI / longRange);
+
+        // Loop through each ore type and calculate its total bias for this chunk
+        for (OreType oreType : OreType.values()) {
+            double depthBias = getDepthBias(chunkData.getMinHeight(), oreType);
+            double biomeBias = getBiomeBias(biome.getBiome(8, 8));
+            double totalBias = latBias * longBias * biomeBias * depthBias * maxBias;
+
+            // Set the ore bias for this ore type in this chunk
+            chunkData.setRegion(
+                0, oreType.ordinal(), 0,
+                16, oreType.getMaxHeight() - oreType.getMinHeight() + 1, 16,
+                new MaterialData(oreType.getMaterial()),
+                new double[16][oreType.getMaxHeight() - oreType.getMinHeight() + 1][16]
+            );
+            chunkData.setRegion(
+                0, oreType.ordinal(), 0,
+                16, oreType.getMaxHeight() - oreType.getMinHeight() + 1, 16,
+                null,
+                new double[16][oreType.getMaxHeight() - oreType.getMinHeight() + 1][16]
+            );
+            chunkData.setRegion(
+                0, oreType.ordinal(), 0,
+                16, oreType.getMaxHeight() - oreType.getMinHeight() + 1, 16,
+                null,
+                new double[16][oreType.getMaxHeight() - oreType.getMinHeight() + 1][16]
+            );
+            chunkData.setRegion(
+                0, oreType.ordinal(), 0,
+                16, oreType.getMaxHeight() - oreType.getMinHeight() + 1, 16,
+                null,
+                new double[16][oreType.getMaxHeight() - oreType.getMinHeight() + 1][16]
+            );
+
+            // Set the ore bias for this ore type in this chunk
+            for (int x = 0; x &lt; 16; x++) {
+                for (int z = 0; z &lt; 16; z++) {
+                    for (int y = oreType.getMinHeight(); y &lt;= oreType.getMaxHeight(); y++) {
+                        chunkData.setBlock(
+                            x, y, z,
+                            oreType.getMaterial(),
+                            new double[]{totalBias}
+                        );
+                    }
+                }
+            }
+        }
+
+        return chunkData
+    }
+}
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../../mech/economy/resources/crops.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../../../mech/economy/API.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../../mech/economy/resources/crops.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../../../mech/economy/API.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../../elasticlunr.min.js"></script>
+        <script src="../../../mark.min.js"></script>
+        <script src="../../../searcher.js"></script>
+
+        <script src="../../../clipboard.min.js"></script>
+        <script src="../../../highlight.js"></script>
+        <script src="../../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../../../theme/pagetoc.js"></script>
+
+
+    </body>
+</html>
