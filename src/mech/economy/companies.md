@@ -29,6 +29,14 @@ In-order to maintain a company, a daily upkeep of `100 x 0.75(amount of members)
 /company bank
 ```
 
+A company must also be registered to a physical location on the map. The physical location of the company is that company's [HQ](/src/mech/nodes/nations/plots.md) and it will determine the income tax rate come payday. CEOs must either purchase a plot from a nation or be given a plot by a nation leader. 
+   
+You may also claim plots in the wilderness at a default cost. This allows for trade companies to be autonomous and to avoid paying income tax. Normal tax rates still apply to transactions done at any of the company owned markets. 
+   
+A company must also have a physical bank [vault](/src/mech/economy/banking.md).
+
+> See: [Plots](/src/mech/nodes/nations/plots.md), [Objects](/src/mech/nodes/nations/objects.md), [Market](/src/mech/economy/market.md) and [Banking](/src/mech/economy/banking.md)
+
 ## Company Owned Shops and Profit Sharing
 
 Once a company is registered, any shops registered to any of its members will automatically be registered to the company. 
