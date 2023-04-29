@@ -72,10 +72,16 @@ Companies have stock value that is determined by how well that company performs 
 Each company by default starts with 100,000 shares available to be bought. Anyone can purchase these stocks including company members. The starting price of a stock is 
    
 ### Buying and Selling Stocks
+
+#### ***Buying***
 There are two ways for players to purchase stock in a company: `buy limit orders` and `buy stop orders`. 
     
 Buy limit orders are located below current price meaning they are filled at a designated price or better. Buy limit orders are designed for precision.
-
+   
+Buy stop orders are located above current price meaning they are filled at the best available market price. Buy stop orders are intended to enter or exit the market immediately upon being elected.
+   
+![buy limit vs buy stop](../../images/buy-limit-stop-graph.jpeg)
+   
 Players can purchase stocks in registered companies using the following command:
 
 ```
