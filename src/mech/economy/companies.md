@@ -1,5 +1,6 @@
 > <span style="color:red">Currently unimplemented.</span>
 # Companies
+> See also [Commands](/src/mech/economy/companies/commands.md) for a full list of commands.
 
 ## Overview
 
@@ -66,7 +67,7 @@ In the event that a member of the company who has shops registered to them is re
 Companies have stock value that is determined by how well that company performs based on the following metrics:
 
 1. Size of the company: the amount of shops registered to the company.
-2. Weekly revenue of the company: the total weekly sum of the revenue made by the company through the buying and selling of goods via shops.
+2. Daily revenue of the company: the total daily sum of the revenue made by the company through the buying and selling of goods via shops.
 3. Amount of shares available for purchase: As with the real world stock market, supply and demand plays a big role in determining the price of a stock.
    
 Each company by default starts with 100,000 shares available to be bought. Anyone can purchase these stocks including company members. The starting price of a stock is 
@@ -82,22 +83,48 @@ Buy stop orders are located above current price meaning they are filled at the b
    
 ![buy limit vs buy stop](../../images/buy-limit-stop-graph.jpeg)
    
-Players can purchase stocks in registered companies using the following command:
+Players can place buy stop orders for stocks in registered companies using the following command:
 
 ```
 /company buy [ticker symbol] [amount]
 ```
    
 This command will purchase that amount of available shares at whatever asking price is available.
+   
+To place a limit buy order, you must use the following command:
     
-Players can also sell their stocks back to the company using the following command:
+```
+/company limitbuy [ticker symbol] [amount] [limit price]
+```
+   
+In this command we have the `limit price` which will set the target price for shares to be bought either at that price or lower  in-order to fill the limit buy order.
+    
 
+#### ***Selling***
+Just like with buy orders, there are two ways to sell stock: `sell limit orders` and `sell stop orders`.
+   
+A sell limit is a pending order used to sell at the limit price or higher while a sell stop, which is also a pending order, is used to sell at the stop price or lower. 
+   
+Sell limit is used to guarantee a profit by selling above the market price and sell stop is used to minimize loss by selling at the stop price.
+
+![sell limit vs sell stop](../../images/sell-limit-stop-graph.jpeg)
+   
+Players can place sell stop orders for stocks they own by executing the following command:
+   
 ```
 /company sell [ticker symbol] [amount]
 ```
 
-The amount parameter is the number of stocks the player wants to sell.
+The amount parameter is the number of stocks the player wants to sell. By putting "all" instead of a number will place an order to sell all owned shares at the highest available bid price. 
 
+To place a limit sell order, you can use the following command:
+   
+```
+/company limitsell [ticker symbol] [amount] [limit price]
+```
+   
+Much like setting a buy limit order, the `limit price` parameter will set the asking price for the shares and will attempt to sell whatever specified amount of shares of a stock at that asking price or higher. 
+   
 ### NPC Integration
 
 ## Technical Overview
@@ -181,3 +208,30 @@ public class ShopListener implements Listener {
     }
 }
 ```
+
+
+The design for the stock market looks good so far! Here are a few suggestions to add more details:
+
+### Stock Value Calculation
+
+The stock value of a company can be calculated using the following formula:
+
+$$ \text{Stock Value} = \frac{\text{Weekly Revenue}}{\text{Size of the Company}} \times 1000 $$
+
+The resulting stock value is multiplied by 1000 to make it a more manageable number. This formula takes into account both the size of the company (which can be an indication of its stability) and its weekly revenue (which can indicate its growth potential). The stock value can be updated on a daily or weekly basis.
+
+### Market Order Types
+
+In addition to the `buy stop` and `buy limit` orders, we can also provide other order types to give players more control over their trades:
+
+- `sell limit`: This order type allows players to sell their shares at a designated price or better.
+- `sell stop`: This order type allows players to sell their shares at the best available market price once the price drops below a certain point.
+- `stop-limit`: This order type combines the `stop` and `limit` orders. The player sets a stop price and a limit price, and the order will only be executed if the stop price is reached, and the limit price can be met.
+
+### Stock Market Data
+
+We can also provide additional data to players who are interested in tracking the performance of the stock market. For example, we can keep track of the following:
+
+- Highest performing stocks: We can provide a list of the stocks that have had the highest percentage increase in value over a certain time period (e.g., last week, last month, last quarter).
+- Most active stocks: We can provide a list of the stocks that have had the highest volume of trades over a certain time period.
+- Market trends: We can provide a graph or chart that shows the overall trend of the stock market over time. This can help players to make informed decisions about when to buy or sell their stocks.
