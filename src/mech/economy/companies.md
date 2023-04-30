@@ -1,6 +1,6 @@
 > <span style="color:red">Currently unimplemented.</span>
 # Companies
-> See also [Commands](/src/mech/economy/companies/commands.md) for a full list of commands.
+> See also [Commands](/src/mech/economy/companies/commands.md) for a full list of commands related to this page as well as aliases.
 
 ## Overview
 
@@ -101,7 +101,7 @@ In this command we have the `limit price` which will set the target price for sh
     
 
 #### ***Selling***
-Just like with buy orders, there are two ways to sell stock: `sell limit orders` and `sell stop orders`.
+Just like with buy orders, there are `sell limit orders` and `sell stop orders` as well as an additional third type which are `stop limit orders`.
    
 A sell limit is a pending order used to sell at the limit price or higher while a sell stop, which is also a pending order, is used to sell at the stop price or lower. 
    
@@ -124,6 +124,29 @@ To place a limit sell order, you can use the following command:
 ```
    
 Much like setting a buy limit order, the `limit price` parameter will set the asking price for the shares and will attempt to sell whatever specified amount of shares of a stock at that asking price or higher. 
+   
+There is a third action which is the `stop limit order`. 
+   
+> A stop-limit order is a conditional trade over a set time frame that combines the features of stop with those of a limit order and is used to mitigate risk. It is related to other order types, including limit orders (an order to either buy or sell a specified number of shares at a given price or better) and stop-on-quote orders (an order to either buy or sell a security after its price has surpassed a specified point).
+> - [Investopedia](https://www.investopedia.com/terms/s/stop-limitorder.asp#What%20Is%20A%20Stop-Limit%20Order?)
+   
+![stop limit order](../../images/stop-limit-order.webp)
+   
+To place a `stop limit order` one may execute the following command:
+   
+```
+/company stoplimitbuy [ticker symbol] [amount] [stop price] [limit price] [duration]
+```
+
+The `ticker symbol` parameter refers to the company whose stocks the player wants to purchase, `amount` is the number of shares the player wants to purchase, `stop price` is the price at which the stop order will trigger, `limit price` is the price at which the order will be executed after the stop price is triggered, and `duration` is the length of time the order will remain active. 
+
+For example, if a player wants to place a stop limit order for 50 shares of a company with ticker symbol `ABC` with a stop price of 10 and a limit price of 11 that will remain active for 5 minutes, they would use the following command:
+
+```
+/company stoplimitbuy ABC 50 10 11 5m
+``` 
+
+This command would place a stop limit order to purchase 50 shares of company `ABC` at a limit price of 11, triggered when the stock reaches a price of 10, and will remain active for 5 minutes.
    
 ### NPC Integration
 
