@@ -56,6 +56,7 @@
 # Core
 - [ACCommonLib](core/common-lib.md)
 - [Datum](core/datum.md)
+- [Ranks](core/ranks.md)
 
 # General Development
 - [Housekeeping](administration/housekeeping.md)
