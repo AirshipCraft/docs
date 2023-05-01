@@ -1,5 +1,11 @@
 # Commands
 Here is a full list of commands for the [companies](/src/mech/economy/companies.md) portion of the [economy](/src/mech/economy.md) system. 
+
+## General Commands
+   
+General commands for managing a company:
+   
+- `/company register [company name] [ticker symbol] [optional: # of shares]`: Registers a new company with a ticker symbol. Also takes a optional argument that changes the number of shares from the default (100,000).
    
 ## Stock Market Commands
 
