@@ -1,5 +1,5 @@
 # Commands
-Here is a full list of commands for the [companies](/src/mech/economy/companies.md) portion of the [economy](/src/mech/economy.md) system. 
+Here is a full list of commands for the [companies](/src/mech/economy/companies.md) portion of the [economy](/src/mech/economy.md) system. It also includes a list of aliases and  permissions.
 
 ## General Commands
    
