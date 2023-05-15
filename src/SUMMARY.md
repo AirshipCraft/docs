@@ -47,6 +47,7 @@
 - [Agriculture](mech/agriculture.md)
   
 - [Quests](mech/quests.md)
+- [Dungeons](mech/dungeons.md)
 
 # Map
 - [Regions](map/regions.md)
