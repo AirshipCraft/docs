@@ -24,3 +24,99 @@ The dungeon generation will employ a combination of randomized placement and maz
    
 Enemies will be placed strategically throughout the dungeon to provide challenging combat encounters. The plugin will utilize spawn points based on the room types, with enemy types and difficulty scaling depending on the dungeon's overall challenge level. Loot distribution will be carefully balanced, rewarding players with weapons, armor, and valuable items for successfully navigating and defeating enemies within the dungeon. To enhance gameplay variety, the plugin will feature puzzles and traps within dungeons. Puzzles will be generated or selected from a pool of predefined puzzles, ranging from logic-based challenges to environmental interactions. Traps will have different trigger mechanisms and consequences, adding an element of danger and careful exploration to the dungeons.
    
+The goal is to build a series of pre-made rooms and corridors and then create an algorithm for spawning rooms and corridors to ensure connectivity. 
+   
+### Dungeon Generation
+Designing a procedurally generated dungeon plugin involves several key components: generating the dungeon layout, placing rooms and corridors, spawning enemies, and distributing loot. 
+
+1. **Dungeon Layout Generation**:
+   - Define the overall structure and size of the dungeon.
+   - Determine the number of rooms and corridors to generate.
+   - Decide the layout of rooms and corridors, ensuring connectivity between them.
+   
+```java
+public class DungeonLayoutGenerator {
+    public static DungeonLayout generateLayout(int dungeonSize) {
+        DungeonLayout layout = new DungeonLayout(dungeonSize);
+        
+        // Generate the layout using your chosen algorithm (e.g., maze generation, randomized placement)
+        // Ensure connectivity between rooms and corridors
+        
+        return layout;
+    }
+}
+```
+
+1. **Room and Corridor Placement**:
+   - Define various types of rooms and corridors with their respective properties.
+   - Randomly select and place rooms and corridors within the generated layout.
+   
+```java
+public class RoomCorridorPlacement {
+    public static void placeRoomsAndCorridors(DungeonLayout layout) {
+        // Iterate through each cell of the layout
+        
+        // Randomly select a room or corridor type
+        
+        // Place the selected room or corridor within the layout
+        
+        // Adjust the layout to ensure connections and avoid overlapping
+        
+        // Repeat until the desired number of rooms and corridors are placed
+    }
+}
+```
+
+1. **Enemy Spawning**:
+   - Define various enemy types and their characteristics.
+   - Determine spawn points within the generated rooms and corridors.
+   - Randomly select enemy types and spawn them in appropriate locations.
+   
+```java
+public class EnemySpawning {
+    public static void spawnEnemies(DungeonLayout layout) {
+        for (Room room : layout.getRooms()) {
+            // Determine spawn points within each room
+            
+            // Randomly select an enemy type from a predefined pool
+            
+            // Spawn the selected enemy at the determined spawn point within the room
+        }
+        
+        for (Corridor corridor : layout.getCorridors()) {
+            // Determine spawn points within each corridor
+            
+            // Randomly select an enemy type from a predefined pool
+            
+            // Spawn the selected enemy at the determined spawn point within the corridor
+        }
+    }
+}
+```
+
+1. **Loot Distribution**:
+   - Define various loot items with their respective rarity and properties.
+   - Determine appropriate locations for loot distribution within the dungeon.
+   - Randomly select loot items based on their rarity and distribute them.
+   
+```java
+public class LootDistribution {
+    public static void distributeLoot(DungeonLayout layout) {
+        for (Room room : layout.getRooms()) {
+            // Determine suitable locations within each room for loot distribution
+            
+            // Randomly select loot items based on their rarity and properties
+            
+            // Distribute the selected loot items to the determined locations within the room
+        }
+        
+        for (Corridor corridor : layout.getCorridors()) {
+            // Determine suitable locations within each corridor for loot distribution
+            
+            // Randomly select loot items based on their rarity and properties
+            
+            // Distribute the selected loot items to the determined locations within the corridor
+        }
+    }
+}
+```
