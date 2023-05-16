@@ -27,96 +27,84 @@ Enemies will be placed strategically throughout the dungeon to provide challengi
 The goal is to build a series of pre-made rooms and corridors and then create an algorithm for spawning rooms and corridors to ensure connectivity. 
    
 ### Dungeon Generation
-Designing a procedurally generated dungeon plugin involves several key components: generating the dungeon layout, placing rooms and corridors, spawning enemies, and distributing loot. 
+Designing a procedurally generated dungeon plugin involves several key components: generating the dungeon layout, placing rooms and corridors, spawning enemies, and distributing loot. We can create a collection of prebuilt room and corridor schematics using [`FastAsyncWorldEdit`](https://github.com/IntellectualSites/FastAsyncWorldEdit). These schematics represent individual sections of the dungeon that can be combined to create the overall layout. 
 
-1. **Dungeon Layout Generation**:
-   - Define the overall structure and size of the dungeon.
-   - Determine the number of rooms and corridors to generate.
-   - Decide the layout of rooms and corridors, ensuring connectivity between them.
-   
-```java
-public class DungeonLayoutGenerator {
-    public static DungeonLayout generateLayout(int dungeonSize) {
-        DungeonLayout layout = new DungeonLayout(dungeonSize);
-        
-        // Generate the layout using your chosen algorithm (e.g., maze generation, randomized placement)
-        // Ensure connectivity between rooms and corridors
-        
-        return layout;
-    }
-}
-```
+1. **Generate Dungeon Layout**:
 
-1. **Room and Corridor Placement**:
-   - Define various types of rooms and corridors with their respective properties.
-   - Randomly select and place rooms and corridors within the generated layout.
-   
 ```java
-public class RoomCorridorPlacement {
-    public static void placeRoomsAndCorridors(DungeonLayout layout) {
-        // Iterate through each cell of the layout
-        
-        // Randomly select a room or corridor type
-        
-        // Place the selected room or corridor within the layout
-        
-        // Adjust the layout to ensure connections and avoid overlapping
-        
-        // Repeat until the desired number of rooms and corridors are placed
-    }
-}
-```
+public void generateDungeon(World world, Location startLocation, int sizeX, int sizeY, int sizeZ) {
+    // Loop through the desired size of the dungeon
+    for (int x = 0; x < sizeX; x++) {
+        for (int y = 0; y < sizeY; y++) {
+            for (int z = 0; z < sizeZ; z++) {
+                // Choose a random room or corridor schematic from the collection
+                Schematic schematic = getRandomSchematic();
 
-1. **Enemy Spawning**:
-   - Define various enemy types and their characteristics.
-   - Determine spawn points within the generated rooms and corridors.
-   - Randomly select enemy types and spawn them in appropriate locations.
-   
-```java
-public class EnemySpawning {
-    public static void spawnEnemies(DungeonLayout layout) {
-        for (Room room : layout.getRooms()) {
-            // Determine spawn points within each room
-            
-            // Randomly select an enemy type from a predefined pool
-            
-            // Spawn the selected enemy at the determined spawn point within the room
-        }
-        
-        for (Corridor corridor : layout.getCorridors()) {
-            // Determine spawn points within each corridor
-            
-            // Randomly select an enemy type from a predefined pool
-            
-            // Spawn the selected enemy at the determined spawn point within the corridor
+                // Calculate the actual position based on the startLocation and current coordinates
+                Location currentPosition = startLocation.clone().add(x, y, z);
+
+                // Paste the schematic into the world at the current position
+                schematic.paste(world, currentPosition);
+            }
         }
     }
 }
 ```
 
-1. **Loot Distribution**:
-   - Define various loot items with their respective rarity and properties.
-   - Determine appropriate locations for loot distribution within the dungeon.
-   - Randomly select loot items based on their rarity and distribute them.
-   
+3. **Randomize Room and Corridor Placement**:
+
 ```java
-public class LootDistribution {
-    public static void distributeLoot(DungeonLayout layout) {
-        for (Room room : layout.getRooms()) {
-            // Determine suitable locations within each room for loot distribution
-            
-            // Randomly select loot items based on their rarity and properties
-            
-            // Distribute the selected loot items to the determined locations within the room
-        }
-        
-        for (Corridor corridor : layout.getCorridors()) {
-            // Determine suitable locations within each corridor for loot distribution
-            
-            // Randomly select loot items based on their rarity and properties
-            
-            // Distribute the selected loot items to the determined locations within the corridor
+public void generateDungeonLayout(World world, Location startLocation, int sizeX, int sizeY, int sizeZ) {
+    Random random = new Random();
+
+    for (int x = 0; x < sizeX; x++) {
+        for (int y = 0; y < sizeY; y++) {
+            for (int z = 0; z < sizeZ; z++) {
+                // Generate a random number to determine whether to place a room or corridor
+                if (random.nextDouble() < roomProbability) {
+                    // Place a room schematic
+                    Schematic roomSchematic = getRandomRoomSchematic();
+                    Location currentPosition = startLocation.clone().add(x, y, z);
+                    roomSchematic.paste(world, currentPosition);
+                } else {
+                    // Place a corridor schematic
+                    Schematic corridorSchematic = getRandomCorridorSchematic();
+                    Location currentPosition = startLocation.clone().add(x, y, z);
+                    corridorSchematic.paste(world, currentPosition);
+                }
+            }
         }
     }
+}
+```
+
+4. **Handle Enemy Spawning**:
+
+```java
+public void spawnEnemies(World world, Location location, int numEnemies) {
+    for (int i = 0; i < numEnemies; i++) {
+        // Generate a random enemy type or select from a predefined list
+        EntityType enemyType = getRandomEnemyType();
+
+        // Generate a random location within the room to spawn the enemy
+        Location enemyLocation = getRandomLocationWithinRoom(location);
+
+        // Spawn the enemy in the world
+        world.spawnEntity(enemyLocation, enemyType);
+    }
+}
+```
+
+5. **Manage Loot Tables**:
+
+```java
+public ItemStack generateRandomLoot() {
+    // Load loot table configuration from a file or define it in code
+    LootTable lootTable = loadLootTable();
+
+    // Select a random item from the loot table
+    ItemStack loot = lootTable.getRandomItem();
+
+    return loot;
 }
 ```
