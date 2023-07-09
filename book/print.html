@@ -3738,6 +3738,98 @@ public class QuestManager {
 <p>When a quest is completed, the <code>'currentQuestIndex'</code> is incremented, and the <code>startNextQuest()</code> method is called to begin the next quest in the chain. If there are no more quests in the chain, the <code>giveCumulativeRewards()</code> method is called to give the player their cumulative rewards.</p>
 <p>Overall, quest chaining and cumulative rewards are great features to implement in a quest system, as they provide a sense of progression and immersion for the player.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="dungeons"><a class="header" href="#dungeons">Dungeons</a></h1>
+<p>In role-playing games (RPGs), dungeons typically refer to isolated, enclosed areas within the game world that are designed to be challenging for the player's character to navigate and overcome. Dungeons are often filled with various obstacles, puzzles, traps, and enemies, providing a sense of adventure and exploration.</p>
+<p>The term &quot;dungeon&quot; originated from tabletop RPGs like Dungeons &amp; Dragons, where it described underground complexes or labyrinths. However, in modern RPGs, dungeons can take on various forms and settings, including caves, ruins, forests, castles, or even futuristic spaceships.</p>
+<h2 id="overview-12"><a class="header" href="#overview-12">Overview</a></h2>
+<p>Dungeons serve multiple purposes in RPGs such as often housing important story-driven quests or serve as the primary setting for the player to complete specific objectives, such as retrieving an artifact, rescuing a captive, or defeating a powerful boss. Dungeons frequently provide challenges that test the player's skills and abilities. By successfully overcoming these challenges, players earn experience points, loot, and rewards that contribute to their character's growth and advancement. </p>
+<p>Dungeons are typically designed with branching paths, hidden areas, and secrets to encourage exploration. Players may uncover valuable treasures, unique items, or additional lore by thoroughly exploring the dungeon's nooks and crannies. Dungeons often feature combat encounters with a variety of enemies, ranging from basic monsters to powerful bosses. Players must employ combat tactics, use their character's abilities effectively, and make strategic decisions to overcome these challenges.</p>
+<p>Dungeons often have a distinct atmosphere, such as being dimly lit, eerie, or foreboding, which adds to the immersive experience of the game. Sound design, visual effects, and environmental storytelling are utilized to create a unique ambiance within each dungeon. They can vary significantly in size, complexity, and difficulty, ranging from short and straightforward challenges to sprawling multi-level complexes that require hours or even multiple gaming sessions to complete. They are a fundamental element of many RPGs, providing a sense of adventure, progression, and accomplishment for players as they delve into the depths of these treacherous locations.</p>
+<h2 id="procedural-generation"><a class="header" href="#procedural-generation">Procedural Generation</a></h2>
+<p>Procedural generation refers to the technique of creating content, such as graphics, levels, or audio, algorithmically rather than manually designing each individual component. It involves using predefined rules, algorithms, and randomization to generate content dynamically, allowing for a potentially infinite variety of outcomes.</p>
+<p>In procedural generation, the content is generated based on a set of parameters or rules that define its characteristics. These rules can be as simple as specifying the dimensions of a randomly generated maze or as complex as modeling the behavior and appearance of a realistic ecosystem in a video game.</p>
+<p>The key advantage of procedural generation is its ability to create vast amounts of content with relatively little effort, as the content is generated algorithmically rather than being handcrafted. This makes it particularly useful in situations where large amounts of content are needed, such as in open-world video games or in simulations. Procedural generation also provides the advantage of creating unique and unpredictable experiences for users, as the generated content can vary each time it is generated.</p>
+<h2 id="designing-the-plugin"><a class="header" href="#designing-the-plugin">Designing the Plugin</a></h2>
+<p>The dungeon generation will employ a combination of randomized placement and maze generation algorithms. Randomized placement will determine the location and type of rooms, while maze generation algorithms will create the interconnected corridors between them. This approach ensures a diverse and organic layout for each dungeon. The dungeon layouts will consist of various room types and interconnected corridors. Rooms will have different functions and sizes, including treasure rooms, monster dens, puzzle rooms, and trap-filled corridors. The plugin will intelligently combine these elements to create engaging and challenging dungeon layouts.</p>
+<p>Enemies will be placed strategically throughout the dungeon to provide challenging combat encounters. The plugin will utilize spawn points based on the room types, with enemy types and difficulty scaling depending on the dungeon's overall challenge level. Loot distribution will be carefully balanced, rewarding players with weapons, armor, and valuable items for successfully navigating and defeating enemies within the dungeon. To enhance gameplay variety, the plugin will feature puzzles and traps within dungeons. Puzzles will be generated or selected from a pool of predefined puzzles, ranging from logic-based challenges to environmental interactions. Traps will have different trigger mechanisms and consequences, adding an element of danger and careful exploration to the dungeons.</p>
+<p>The goal is to build a series of pre-made rooms and corridors and then create an algorithm for spawning rooms and corridors to ensure connectivity. </p>
+<h3 id="dungeon-generation"><a class="header" href="#dungeon-generation">Dungeon Generation</a></h3>
+<p>Designing a procedurally generated dungeon plugin involves several key components: generating the dungeon layout, placing rooms and corridors, spawning enemies, and distributing loot. We can create a collection of prebuilt room and corridor schematics using <a href="https://github.com/IntellectualSites/FastAsyncWorldEdit"><code>FastAsyncWorldEdit</code></a>. These schematics represent individual sections of the dungeon that can be combined to create the overall layout. </p>
+<ol>
+<li><strong>Generate Dungeon Layout</strong>:</li>
+</ol>
+<pre><code class="language-java">public void generateDungeon(World world, Location startLocation, int sizeX, int sizeY, int sizeZ) {
+    // Loop through the desired size of the dungeon
+    for (int x = 0; x &lt; sizeX; x++) {
+        for (int y = 0; y &lt; sizeY; y++) {
+            for (int z = 0; z &lt; sizeZ; z++) {
+                // Choose a random room or corridor schematic from the collection
+                Schematic schematic = getRandomSchematic();
+
+                // Calculate the actual position based on the startLocation and current coordinates
+                Location currentPosition = startLocation.clone().add(x, y, z);
+
+                // Paste the schematic into the world at the current position
+                schematic.paste(world, currentPosition);
+            }
+        }
+    }
+}
+</code></pre>
+<ol start="3">
+<li><strong>Randomize Room and Corridor Placement</strong>:</li>
+</ol>
+<pre><code class="language-java">public void generateDungeonLayout(World world, Location startLocation, int sizeX, int sizeY, int sizeZ) {
+    Random random = new Random();
+
+    for (int x = 0; x &lt; sizeX; x++) {
+        for (int y = 0; y &lt; sizeY; y++) {
+            for (int z = 0; z &lt; sizeZ; z++) {
+                // Generate a random number to determine whether to place a room or corridor
+                if (random.nextDouble() &lt; roomProbability) {
+                    // Place a room schematic
+                    Schematic roomSchematic = getRandomRoomSchematic();
+                    Location currentPosition = startLocation.clone().add(x, y, z);
+                    roomSchematic.paste(world, currentPosition);
+                } else {
+                    // Place a corridor schematic
+                    Schematic corridorSchematic = getRandomCorridorSchematic();
+                    Location currentPosition = startLocation.clone().add(x, y, z);
+                    corridorSchematic.paste(world, currentPosition);
+                }
+            }
+        }
+    }
+}
+</code></pre>
+<ol start="4">
+<li><strong>Handle Enemy Spawning</strong>:</li>
+</ol>
+<pre><code class="language-java">public void spawnEnemies(World world, Location location, int numEnemies) {
+    for (int i = 0; i &lt; numEnemies; i++) {
+        // Generate a random enemy type or select from a predefined list
+        EntityType enemyType = getRandomEnemyType();
+
+        // Generate a random location within the room to spawn the enemy
+        Location enemyLocation = getRandomLocationWithinRoom(location);
+
+        // Spawn the enemy in the world
+        world.spawnEntity(enemyLocation, enemyType);
+    }
+}
+</code></pre>
+<ol start="5">
+<li><strong>Manage Loot Tables</strong>:</li>
+</ol>
+<pre><code class="language-java">public ItemStack generateRandomLoot() {
+    // Load loot table configuration from a file or define it in code
+    LootTable lootTable = loadLootTable();
+
+    // Select a random item from the loot table
+    ItemStack loot = lootTable.getRandomItem();
+
+    return loot;
+}
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="regions"><a class="header" href="#regions">Regions</a></h1>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="city-states"><a class="header" href="#city-states">City States</a></h1>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="map-overview"><a class="header" href="#map-overview">Map Overview</a></h1>
@@ -3746,12 +3838,12 @@ public class QuestManager {
 </blockquote>
 <h1 id="accommonlib"><a class="header" href="#accommonlib">ACCommonLib</a></h1>
 <p>Shared common library framework for future plugins that are relevant to the project.</p>
-<h2 id="overview-12"><a class="header" href="#overview-12">Overview</a></h2>
+<h2 id="overview-13"><a class="header" href="#overview-13">Overview</a></h2>
 <p>The purpose of this library is to attempt to eliminate as much unnecessary boilerplate code as possible. This includes things like implementing debugging features, a standardized command manager, and commented-configuration files.</p>
 <p>It also provides the basis for an NPC API as well as a library for particle-related code, including but not limited to vector and character tracking. </p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="playerstats"><a class="header" href="#playerstats">PlayerStats</a></h1>
 <p><code>PlayerStats</code> is one of the core components of the server. It is meant to function as more of a utility rather than a standalone plugin but offers some standalone functionality.</p>
-<h2 id="overview-13"><a class="header" href="#overview-13">Overview</a></h2>
+<h2 id="overview-14"><a class="header" href="#overview-14">Overview</a></h2>
 <p>The purpose of this plugin is essentially act as a handler that stores statistics of players for use with other components via API.</p>
 <p>On its own without any integration with the other mechanics or plugins in place, <code>PlayerStats</code> is capable of storing and returning the following information:</p>
 <ol>
@@ -3830,7 +3922,7 @@ public class QuestManager {
 <blockquote>
 <p>This page aims to provide a comprehensive guide to the rank and ranking up system for the Minecraft server, including the staff hierarchy structure and the in-game ranks available to all players.</p>
 </blockquote>
-<h2 id="overview-14"><a class="header" href="#overview-14">Overview</a></h2>
+<h2 id="overview-15"><a class="header" href="#overview-15">Overview</a></h2>
 <p>Having a well-designed ranking system is crucial to maintaining a healthy and active community on any Minecraft server. Careful consideration must be given to both staff and non-staff positions to ensure the server performs well and maintains a positive public image. Neglecting this aspect can cause a server to perform poorly or develop a negative reputation that could have long-lasting negative effects.</p>
 <p>Historically, many servers, including AirshipCraft and other similar Minecraft servers, have struggled with staff abuse, poorly managed responsibilities and power, as well as schisms and corruption stemming from factionalism caused by undisciplined staff. To avoid these issues, it is important to establish a well-structured staff hierarchy with clear responsibilities and expectations.</p>
 <p>In addition, a well-designed non-staff rank system that promotes social mobility and player engagement is also crucial. This can be seen in prison servers where players work towards a rank-up and in servers such as StarQuest that offer multiple obtainable ranks and rank prefixes that players can work towards simply by playing the server normally. StarQuest also employed a unique system of promoting multiple play styles through entire rank &quot;trees&quot; that allowed players to move up in certain paths if their play style better reflected that &quot;career&quot; choice.</p>
@@ -4254,7 +4346,7 @@ Fixes #123, #124
 <div style="break-before: page; page-break-before: always;"></div><h1 id="phase-1-1"><a class="header" href="#phase-1-1">Phase 1</a></h1>
 <p>The focus of the first phase of development is developing a strong backbone for the entire project to work off of. This includes the creation of a shared plugin framework as well as setting the grounds for a solid API. Attached below is a diagram showing the dependency web for this phase of development, and from that diagram one might be able to discern from it an abstract timeline for this phase of development:</p>
 <p><img src="administration/timeline/images/../../../images/p1-dependency-web.png" alt="Phase 1 Dependencies" /></p>
-<h2 id="overview-15"><a class="header" href="#overview-15">Overview</a></h2>
+<h2 id="overview-16"><a class="header" href="#overview-16">Overview</a></h2>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="lore"><a class="header" href="#lore">Lore</a></h1>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="contributions"><a class="header" href="#contributions">Contributions</a></h1>
 <p>This page contains a list of all of the kind and amazing people who have contributed pieces of work to the project. If you have helped with the project and do not see your name here, please message zune (zune#8662) on Discord!</p>
